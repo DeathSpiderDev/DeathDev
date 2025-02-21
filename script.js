@@ -11,13 +11,13 @@ async function fetchDiscordStatus() {
 
             document.getElementById("discord-avatar").src = avatarURL;
             document.getElementById("favicon").href = avatarURL; // Set favicon
-            document.getElementById("discord-username").textContent = `👤 ${user.discord_user.username}#${user.discord_user.discriminator}`;
+            document.getElementById("discord-username").textContent = `${user.discord_user.username}#${user.discord_user.discriminator}`;
             
             let statusText = "";
             switch (user.discord_status) {
                 case "online": statusText = "🟢 Online"; break;
                 case "idle": statusText = "🟠 Idle"; break;
-                case "dnd": statusText = "🔴 Do Not Disturb"; break;
+                case "dnd": statusText = "🔴 DND"; break;
                 case "offline": statusText = "⚫ Offline"; break;
             }
             document.getElementById("discord-status").textContent = `🔵 Status: ${statusText}`;

@@ -1,0 +1,141 @@
+/* Import Cool Font */
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700&display=swap');
+
+/* General Styles */
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Exo 2', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Title Section */
+header {
+    background: linear-gradient(90deg, red, black, red);
+    padding: 20px;
+    border-bottom: 3px solid red;
+    box-shadow: 0 0 15px red;
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+    text-shadow: 2px 2px 10px red;
+    letter-spacing: 2px;
+    animation: glow 1.5s infinite alternate;
+}
+
+/* Glowing Effect */
+@keyframes glow {
+    from { text-shadow: 2px 2px 15px red; }
+    to { text-shadow: 2px 2px 25px red; }
+}
+
+/* Discord Profile Section */
+.discord-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 0 15px red;
+    border: 2px solid red;
+    width: 80%;
+    margin: auto;
+    max-width: 800px;
+}
+
+/* Avatar */
+#discord-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px red;
+    margin-right: 15px;
+    transition: transform 0.3s;
+}
+
+#discord-avatar:hover {
+    transform: scale(1.1);
+}
+
+/* Status Info */
+.discord-info {
+    text-align: left;
+}
+
+.discord-info p {
+    font-size: 0.9em;
+    color: #ccc;
+    margin: 5px 0;
+}
+
+/* Contact Section */
+#contact {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px red;
+    border: 2px solid red;
+    width: 80%;
+    margin: 50px auto;
+    max-width: 800px;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, red, black, red);
+    padding: 10px;
+    text-align: center;
+    color: white;
+    font-size: 0.9em;
+    border-top: 3px solid red;
+    box-shadow: 0 0 15px red;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Spider Web Background */
+canvas#spider-web {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* 404 Page Styling */
+#error {
+    text-align: center;
+    padding: 50px;
+}
+
+/* Error Image (Now Above H2) */
+.error-image {
+    width: 200px;
+    margin-bottom: 20px;
+    animation: glow 1.5s infinite alternate;
+}
+
+/* Home Button */
+.home-button {
+    display: inline-block;
+    background: red;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px red;
+    transition: transform 0.2s;
+}
+
+.home-button:hover {
+    transform: scale(1.1);
+}

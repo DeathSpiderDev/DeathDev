@@ -1,0 +1,45 @@
+name: Run VSCode with Cloudflare Tunnel (24/7)
+
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'  # Runs every 5 minutes to restart if needed
+
+jobs:
+  run-vscode:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350  # Just under 6 hours to allow for clean restart
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Install required tools
+      run: |
+        if [ ! -f cloudflared ]; then
+          wget -q -nc https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O cloudflared
+          chmod +x cloudflared
+        fi
+        curl -fsSL https://code-server.dev/install.sh | sh
+
+    - name: Start VSCode and Tunnel
+      env:
+        PORT: 10000
+      run: |
+        # Start code-server in background
+        code-server --port $PORT --disable-telemetry --auth none &
+        
+        # Start Cloudflare Tunnel in background
+        ./cloudflared tunnel --url http://127.0.0.1:$PORT --metrics localhost:45678 &
+        
+        # Keep the workflow running until timeout (then it will restart via schedule)
+        while true; do
+          sleep 60
+          echo "Still running..."
+        done
